@@ -1,1 +1,2 @@
-# otus_java_2022_03
+Otus Java Professional
+Roman Gusev (gusev_roma@mail.ru)
