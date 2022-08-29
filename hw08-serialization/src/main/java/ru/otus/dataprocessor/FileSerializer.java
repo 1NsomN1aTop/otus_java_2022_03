@@ -23,9 +23,11 @@ public class FileSerializer implements Serializer {
         try (var buffer = new BufferedWriter(new FileWriter(fullFileName))) {
             String jsonResult = objectMapper.writeValueAsString(data);
             buffer.write(jsonResult);
-        } catch (IOException e) {
+        } catch (FileProcessException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
