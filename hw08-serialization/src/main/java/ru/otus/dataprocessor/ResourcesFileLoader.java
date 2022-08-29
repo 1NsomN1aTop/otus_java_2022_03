@@ -7,6 +7,7 @@ import ru.otus.model.Measurement;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -27,12 +28,14 @@ public class ResourcesFileLoader implements Loader {
     }
 
     @Override
-    public List<Measurement> load() throws IOException {
+    public List<Measurement> load() throws FileProcessException{
         //читает файл, парсит и возвращает результат
         List<Measurement> measurementList;
         try (var buffer = new BufferedInputStream(new FileInputStream(fullFileName))) {
             measurementList = objectMapper.readValue(buffer, new TypeReference<List<Measurement>>() {
             });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return measurementList;
     }
