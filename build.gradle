@@ -31,7 +31,6 @@ allprojects {
             dependency "com.google.guava:guava:${Versions.guava}"
         }
     }
-
     configurations.all {
         resolutionStrategy {
             failOnVersionConflict()
