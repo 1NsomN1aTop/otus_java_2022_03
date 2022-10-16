@@ -5,7 +5,6 @@ import ru.otus.core.repository.DataTemplateException;
 import ru.otus.core.repository.executor.DbExecutor;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -112,8 +111,7 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
             return object;
         } catch (SQLException e) {
             throw new DataTemplateException(e);
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException |
-                NoSuchFieldException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
